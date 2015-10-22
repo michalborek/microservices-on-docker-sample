@@ -1,9 +1,26 @@
-group 'com.nokia.knowcamp'
-version '1.0-SNAPSHOT'
+buildscript {
+  repositories {
+    maven {
+      url 'https://plugins.gradle.org/m2/'
+    }
+    jcenter()
+  }
+  dependencies {
+    classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE'
+    classpath 'gradle.plugin.pl.greenpath.gradle.dockermicroservices:docker-microservices-gradle-plugin:1.7.1'
+  }
+}
 
-apply plugin: 'java'
+allprojects {
+  group 'com.nokia.knowcamp'
+  version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+  apply plugin: 'java'
+  apply plugin: 'spring-boot'
+  apply plugin: 'pl.greenpath.gradle.docker.microservices'
+
+  sourceCompatibility = 1.8
+}
 
 repositories {
   mavenCentral()
@@ -12,7 +29,6 @@ repositories {
 dependencies {
   testCompile group: 'junit', name: 'junit', version: '4.11'
 }
-
 
 task wrapper(type: Wrapper) {
   gradleVersion = '2.8'
