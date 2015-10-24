@@ -1,0 +1,9 @@
+server:
+  port: 8081
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://servicediscovery:8761/eureka/

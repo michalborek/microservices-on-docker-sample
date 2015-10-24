@@ -1,0 +1,12 @@
+mainClassName = 'com.nokia.knowcamp.servicediscovery.ServiceDiscoveryApplication'
+
+dependencies {
+  compile 'org.springframework.cloud:spring-cloud-starter-eureka-server:1.0.3.RELEASE'
+}
+
+docker {
+  port 8761
+}
+configurations {
+  all*.exclude group: '', module: 'servlet-api'
+}

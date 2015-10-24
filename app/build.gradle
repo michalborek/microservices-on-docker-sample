@@ -11,7 +11,9 @@ buildscript {
   }
 }
 
-allprojects {
+apply plugin: 'idea'
+
+subprojects {
   group 'com.nokia.knowcamp'
   version '1.0-SNAPSHOT'
 
@@ -20,15 +22,29 @@ allprojects {
   apply plugin: 'pl.greenpath.gradle.docker.microservices'
 
   sourceCompatibility = 1.8
+
+  repositories {
+    jcenter()
+  }
+
+  docker {
+    dockerfile microserviceTemplate
+    runExtraArgs '-v', '/dev/urandom:/dev/random'
+  }
+
+  dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web:1.2.7.RELEASE'
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka:1.0.3.RELEASE'
+    runtime 'javax.servlet:javax.servlet-api:3.1.0'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+  }
+
 }
 
 repositories {
   mavenCentral()
 }
 
-dependencies {
-  testCompile group: 'junit', name: 'junit', version: '4.11'
-}
 
 task wrapper(type: Wrapper) {
   gradleVersion = '2.8'

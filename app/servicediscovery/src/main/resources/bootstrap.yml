@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: servicediscovery
+  cloud:
+    config:
+      enabled: false

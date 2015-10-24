@@ -1,3 +1,6 @@
-dependencies {
-  compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+mainClassName = 'com.nokia.knowcamp.web.WebApplication'
+
+docker {
+  port 8080
+  linkedMicroservices 'networks', 'servicediscovery'
 }
