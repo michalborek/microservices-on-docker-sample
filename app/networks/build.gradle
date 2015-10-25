@@ -1,0 +1,6 @@
+mainClassName = 'com.nokia.knowcamp.network.NetworkApplication'
+
+docker {
+  port 8081
+  linkedMicroservices 'servicediscovery'
+}

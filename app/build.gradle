@@ -6,12 +6,21 @@ buildscript {
     jcenter()
   }
   dependencies {
+    classpath "io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE"
     classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE'
     classpath 'gradle.plugin.pl.greenpath.gradle.dockermicroservices:docker-microservices-gradle-plugin:1.7.1'
   }
 }
 
+apply plugin: 'io.spring.dependency-management'
 apply plugin: 'idea'
+
+dependencyManagement {
+  imports {
+    mavenBom 'io.spring.platform:platform-bom:1.1.4.RELEASE'
+    mavenBom 'org.springframework.cloud:spring-cloud-netflix:1.0.3.RELEASE'
+  }
+}
 
 subprojects {
   group 'com.nokia.knowcamp'
@@ -33,10 +42,10 @@ subprojects {
   }
 
   dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web:1.2.7.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.cloud:spring-cloud-starter-eureka:1.0.3.RELEASE'
-    runtime 'javax.servlet:javax.servlet-api:3.1.0'
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile 'org.springframework.cloud:spring-cloud-starter-zuul:1.0.3.RELEASE'
+    runtime 'javax.servlet:javax.servlet-api'
   }
 
 }
