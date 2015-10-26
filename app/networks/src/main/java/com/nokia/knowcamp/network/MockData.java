@@ -11,8 +11,9 @@ import static java.util.stream.Collectors.toList;
 
 public class MockData {
 
+  public static final String HOSTNAME = System.getenv("HOSTNAME");
   public static final List<NetworkObject> OBJECTS = asList("App1", "App2", "App3")
-      .stream().map(NetworkObject::new).collect(toList());
+      .stream().map(it -> it + " - " + HOSTNAME).map(NetworkObject::new).collect(toList());
 
   public static final List<NetworkInterface> INTERFACES = asList("ssh", "http", "https")
       .stream().map(NetworkInterface::new).collect(toList());

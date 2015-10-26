@@ -1,6 +1,6 @@
 mainClassName = 'com.nokia.knowcamp.web.WebApplication'
 
 docker {
-  port 8080
   linkedMicroservices 'networks', 'servicediscovery'
+  runExtraArgs '-p', '8080:80'
 }

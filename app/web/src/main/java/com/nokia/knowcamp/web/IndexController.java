@@ -1,22 +1,21 @@
 package com.nokia.knowcamp.web;
 
-import com.netflix.appinfo.InstanceInfo;
-import com.netflix.discovery.DiscoveryClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
-@Controller
+@RestController
 public class IndexController {
 
+  public static final String NETWORKS_SERVICE_URL = "http://NETWORK/";
   @Autowired
-  DiscoveryClient discoveryClient;
+  RestTemplate restTemplate;
 
   @RequestMapping("/")
   public String index() {
-    InstanceInfo networkMicroservice = discoveryClient.getNextServerFromEureka("network", false);
-    System.err.println(networkMicroservice.getHomePageUrl());
+    return "hello world <br/><pre>" + restTemplate
+        .getForEntity(NETWORKS_SERVICE_URL, String.class) + "</pre>";
 
-    return "index";
   }
 }
