@@ -56,26 +56,11 @@
     <section>
       <h2>Agenda</h2>
       <ul>
-        <li class="fragment">Microservice architecture (Michał)</li>
-        <ul>
-          <li class="fragment">Eureka</li>
-          <li class="fragment">Fat Jar</li>
-        </ul>
+        <li>Microservice architecture (Michał)</li>
         <li class="fragment">Docker introduction (Janek)</li>
-        <ul>
-          <li class="fragment">Docker networking</li>
-          <li class="fragment">Gradle plugin</li>
-        </ul>
         <li class="fragment">Real-life example</li>
         <li class="fragment">What went wrong?</li>
-        <ul>
-          <li class="fragment">Nanoservices</li>
-          <li class="fragment">Win vs Lin</li>
-        </ul>
         <li class="fragment">Open issues</li>
-        <ul>
-          <li class="fragment">JVM Memory Hog</li>
-        </ul>
       </ul>
     </section>
 
@@ -197,26 +182,29 @@
       </section>
       <section>
         <h2>Dockerfile generation</h2>
-                <pre><code>
-                  dockerfile {
-                  from ubuntu:14.04
-                  expose 8080
-                  volume '/var/volume'
-                  user 'deamon'
-                  add 'some.jar', 'test.jar'
-                  cmd java "java -jar test.jar"
-                  }
-                </code></pre>
-
+        <!--// @formatter:off -->
+        <pre><code>
+          dockerfile {
+            from ubuntu:14.04
+            expose 8080
+            volume '/var/volume'
+            user 'deamon'
+            add 'some.jar', 'test.jar'
+            cmd java "java -jar test.jar"
+          }
+        </code></pre>
+        <!--// @formatter:on -->
       </section>
       <section>
         <h2>Microservice template</h2>
-                    <pre><code>
-                      dockerfile {
-                      template microserviceTemplate
-                      env 'name', 'value'
-                      ...
-                      }</code></pre>
+        <!--// @formatter:off -->
+        <pre><code>
+          dockerfile {
+            template microserviceTemplate
+            env 'name', 'value'
+            ...
+          }</code></pre>
+        <!--// @formatter:on -->
       </section>
       <section>
         <h2>Bind mounts</h2>
