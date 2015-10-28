@@ -182,12 +182,12 @@ CMD ["apache2-foreground"]
         <!--// @formatter:off -->
         <pre><code class="nohighlight">
         dockerfile {
-        from ubuntu:14.04
-        expose 8080
-        volume '/var/volume'
-        user 'deamon'
-        add 'some.jar', 'test.jar'
-        cmd java "java -jar test.jar"
+          from ubuntu:14.04
+          expose 8080
+          volume '/var/volume'
+          user 'deamon'
+          add 'some.jar', 'test.jar'
+          cmd java "java -jar test.jar"
         }
         </code></pre>
         <!--// @formatter:on -->
